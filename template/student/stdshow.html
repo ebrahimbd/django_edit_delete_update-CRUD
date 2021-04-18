@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+
+ 
+
+{% block content %}
+<style>
+
+
+
+	body{
+  
+	  /* background-size: 1920px 1080px;
+	  background-image: url(https://marketplace.canva.com/MADGxyifIOY/4/screen_2x/canva-loginal-MADGxyifIOY.jpg) 
+	   */
+	  
+	   background: linear-gradient(-70deg,  hsla(49, 24%, 73%, 0.739) 60%, rgba(0, 0, 0, 0) 30%), url(https://images.pexels.com/photos/1450360/pexels-photo-1450360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  
+  
+	  }  
+  #x{
+  
+	  background: rgba(0, 0, 0, 0);
+	backdrop-filter: saturate(180%) blur(10px);
+
+  
+  }
+  
+}
+  </style>
+  
+ 
+<body>
+HI {{user}}
+
+	{% for vai in student %}
+<div class="cointainer" id="x">
+
+	<div class="card"   id="x"  >
+		 
+		<div class="card-body" >
+		  <p class="card-text">  {{ vai.first_name}}{{ vai.lastname}}</p>
+		   
+		  <p class="card-text">{{ vai.email}}</p>
+
+		  <a href="/sdelete/{{vai.id}}"><span class="btn" style="color: red;">DELETE</span></a> 
+		  <a href="/sedit/{{vai.id}}"><span class="btn" style="color: rgb(11, 123, 228);">UPDATE</span></a> 
+		  
+		</div>
+	  </div>
+</div>
+
+<br>
+<br>
+
+	
+	  
+ {% endfor %}
+ 
+		
+
+
+
+	</div>
+</body>
+
+ 
+ 
+{% endblock %}
+
+
+
+
+
+
+
+ 

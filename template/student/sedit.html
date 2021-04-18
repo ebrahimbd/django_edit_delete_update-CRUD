@@ -1,0 +1,205 @@
+
+
+
+{% extends "base.html" %}
+{% load static  %}
+ 
+
+
+{% block content %}
+ 
+<style>
+
+
+
+  body{
+
+	/* background-size: 1920px 1080px;
+	background-image: url(https://marketplace.canva.com/MADGxyifIOY/4/screen_2x/canva-loginal-MADGxyifIOY.jpg) 
+     */
+	
+	 background:  url(https://images.pexels.com/photos/4198029/pexels-photo-4198029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+
+	}  
+
+
+
+
+#x{
+
+	background: rgba(0, 0, 0, 0);
+      backdrop-filter: saturate(180%) blur(10px);
+
+}
+
+p{
+	
+	color: rgb(235, 221, 211);
+}
+
+label {
+	color: rgb(0, 8, 12);
+	text-align: center;
+	font-weight: bold;
+	align-items: center;
+}
+
+ 
+.errorlist{
+	outline-style: double;
+	color: crimson;
+	 
+
+}
+
+
+
+
+
+input{
+  	width: 100%;
+    padding: 3px 20px;
+    margin: 2px 30px;
+    box-sizing: border-box;
+	color: rgb(163, 17, 182);
+	border: 3px solid rgb(24, 216, 49);
+  	
+}
+
+
+</style>
+
+
+ 
+
+ 
+<body>
+	<div class="container h-100" id="x">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				 
+				  <p><u><strong>{{form.errors}}</strong></u></p>
+				<div class="d-flex justify-content-center form_container">
+                   
+					<form method="POST" action="/sedit/{{student.id}}">
+						
+						 
+					 
+						 {% csrf_token %}
+						 First name: <input type="text" name="first_name" maxlength="50" id="id_first_name" value="{{student.first_name}}" >
+						 Lastname: <input type="text" name="lastname" maxlength="50" id="id_lastname"  value="{{student.lastname}}" >
+						 Email: <input type="email" name="email" maxlength="50" id="id_email" value="{{student.email}}">
+						
+						
+						 
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input class="btn btn-success" type="submit" value="submit ">
+				   		</div><br>
+
+
+  
+						   
+					</form>
+				</div>
+
+
+				
+					
+
+				
+			</div>
+		</div>
+	</div>
+
+	
+
+</body>
+
+ 
+
+
+
+ 
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

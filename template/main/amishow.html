@@ -1,0 +1,183 @@
+
+
+
+{% extends "base.html" %}
+{% load static  %}
+ 
+
+
+{% block content %}
+ 
+<style>
+
+
+
+  body{
+
+	/* background-size: 1920px 1080px;
+	background-image: url(https://marketplace.canva.com/MADGxyifIOY/4/screen_2x/canva-loginal-MADGxyifIOY.jpg) 
+     */
+	
+	 background:  url(https://images.pexels.com/photos/4198029/pexels-photo-4198029.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+
+	}  
+
+
+
+
+#x{
+
+	background: rgba(0, 0, 0, 0);
+      backdrop-filter: saturate(180%) blur(10px);
+
+}
+
+p{
+	
+	color: rgb(0, 8, 12);
+	text-align: center;
+	font-weight: bold;
+	align-items: center; 
+}
+
+label {
+	color: rgb(0, 8, 12);
+	text-align: center;
+	font-weight: bold;
+	align-items: center;
+}
+
+ 
+.errorlist{
+	outline-style: double;
+	color: crimson;
+	 
+
+}
+
+
+
+
+
+input{
+  	width: 100%;
+    padding: 3px 20px;
+    margin: 2px 30px;
+    box-sizing: border-box;
+	color: rgb(163, 17, 182);
+	border: 3px solid rgb(24, 216, 49);
+  	
+}
+
+
+</style>
+
+
+ 
+
+ 
+ <body>
+{% for ami in tree %}
+    <div class=" card">
+             hi {{user }} your data is all hear 
+			<p>{{ami}}</p><br>
+			<p> {{ami.name}}</p><br>
+			<p> {{ami.date_joined}}</p><br>
+	  
+</div>
+<br>
+	 
+	 
+	 
+{% endfor %}			
+							 
+	
+							 
+	
+
+
+ </body>
+
+ 
+{%endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
