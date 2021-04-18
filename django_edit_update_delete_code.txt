@@ -1,0 +1,123 @@
+        path('std', a.std, name="std"),
+	path('stdshow', a.stdshow, name="stdshow"),
+	path('sdelete/<str:id>', a.sdelete, name="sdelete"),
+	path('sedit/<str:id>', a.sedit, name="edit"),
+
+
+
+def std(request):
+	form=studentForm()
+	if request.method == "POST":
+		form=studentForm(request.POST)
+		if form.is_valid():
+			try:
+				form.save()
+				return redirect('stdshow')
+			except:
+				pass
+	else:
+		form = studentForm()
+	return render(request, 'student/student.html', {'form':form})
+
+def stdshow(request):
+	obj=student.objects.all()
+	
+	 
+	return render(request, 'student/stdshow.html',{'student':obj })
+
+def sdelete(request, id):
+	obj=student.objects.get(id=id)
+	obj.delete()
+	return redirect('stdshow')
+
+
+
+def sedit(request, id):
+
+	obj =student.objects.get(id=id)
+	banalam=studentForm(request.POST or None, instance=obj)
+	if banalam.is_valid():
+         banalam.save()
+         return redirect('stdshow')
+	 
+	 
+	return render (request, 'student/sedit.html', {'student':obj} )
+
+
+
+///////////////////////////////////////////////student.html////////////////
+    <form method="POST" action="">
+	   
+	   {% csrf_token %}
+             {{form.as_p}}
+		{{form.errors}}
+	</form>
+
+
+	///////////////////////////////////////////////////	studentshow.html/////////////////				
+						 
+	 
+
+	{% for vai in student %}
+ 
+	 
+		  <p class="card-text">  {{ vai.first_name}}{{ vai.lastname}}</p>
+		   
+		  <p class="card-text">{{ vai.email}}</p>
+
+		  <a href="/sdelete/{{vai.id}}"><span class="btn" style="color: red;">DELETE</span></a> 
+		  <a href="/sedit/{{vai.id}}"><span class="btn" >UPDATE</span></a> 
+		  
+
+	
+	  
+ {% endfor %}
+ 
+
+ //////////////////////////////////////sedit.html///////////////////////////////////////////
+
+
+ <form method="POST" action="/sedit/{{student.id}}">
+						
+						 
+					 
+						 {% csrf_token %}
+						 First name: <input type="text" name="first_name" maxlength="50" id="id_first_name" value="{{student.first_name}}" >
+						 Lastname: <input type="text" name="lastname" maxlength="50" id="id_lastname"  value="{{student.lastname}}" >
+						 Email: <input type="email" name="email" maxlength="50" id="id_email" value="{{student.email}}">
+						
+						
+						 
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 		<input class="btn btn-success" type="submit" value="submit ">
+				   		</div><br>
+  
+						   
+</form>
+
+////////////////////////////////////////////////////////////////model.py//////////////////////
+class student(models.Model):
+
+    first_name = models.CharField(max_length=50, default="", blank=True)
+    lastname = models.CharField(max_length=50, default="", blank=True)
+    email = models.EmailField(max_length=50, default="", blank=True)
+	 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////form.py//////////////////////////////////
+class studentForm (forms.ModelForm):
+	class Meta:
+         model = student
+         fields = [ 'first_name', 'lastname',  'email']
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////admin.py//////////////////////
+
+class studentAdmin(admin.ModelAdmin):
+    list_display = [ 'first_name', 'lastname',  'email']
+
+admin.site.register(student, studentAdmin)
